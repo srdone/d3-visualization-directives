@@ -38,7 +38,7 @@
 			datapoints.exit().remove();
 		};
 
-		$scope.
+		$scope.$watch('data', graphData);
 
 	};
 
