@@ -23,6 +23,7 @@
 
 			xScale = d3.scale.linear().range([0, width]);
 			yScale = d3.scale.linear().range([height, 0]);
+			radiusScale = d3.scale.log().range([5, 20]);
 
 			graphData();
 		};
@@ -52,7 +53,7 @@
 					return yScale(d.y);
 				})
 				.attr('r', function (d) {
-					return d.radius;
+					return radiusScale(d.radius);
 				});
 
 			// remove old points
@@ -63,6 +64,7 @@
 			var xValues, yValues;
 			var xMin, xMax;
 			var yMin, yMax;
+			var radiusMin, radiusMax;
 
 			xValues = vm.data.map(function (current) {
 				return current.x;
@@ -72,14 +74,22 @@
 				return current.y;
 			});
 
+			radiusValues = vm.data.map(function (current) {
+				return current.radius;
+			});
+
 			xMin = d3.min(xValues);
 			xMax = d3.max(xValues);
 
 			yMin = d3.min(yValues);
 			yMax = d3.max(yValues);
 
+			radiusMin = d3.min(radiusValues);
+			radiusMax = d3.max(radiusValues);
+
 			xScale.domain([xMin, xMax]);
 			yScale.domain([yMin, yMax]);
+			radiusScale.domain([radiusMin, radiusMax]);
 		};
 
 		$scope.$watch('vm.data', graphData, true);
