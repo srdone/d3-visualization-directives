@@ -12,17 +12,18 @@
 		var xScale, yScale;
 		var width = 500;
 		var height = 300;
+		var padding = 20;
 
 		activate();
 
 		function activate () {
 			svg = d3.select($element[0])
 				.append('svg')
-				.attr('width', width)
-				.attr('height', height);
+				.attr('width', width + padding)
+				.attr('height', height + padding);
 
-			xScale = d3.scale.linear().range([0, width]);
-			yScale = d3.scale.linear().range([height, 0]);
+			xScale = d3.scale.linear().range([padding, width - padding]);
+			yScale = d3.scale.linear().range([height - padding, padding]);
 			radiusScale = d3.scale.log().range([5, 20]);
 
 			graphData();
