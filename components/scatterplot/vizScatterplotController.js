@@ -32,7 +32,17 @@
 
 			datapoints = svg.selectAll('circle')
 				.data(vm.data);
+
+			// update existing points
+			datapoints
+				.attr('cx', function (d) {
+					return xScale(d.x);
+				})
+				.attr('cy', function (d) {
+					return yScale(d.y);
+				});
 			
+			// add new points
 			datapoints.enter()
 				.append('circle')
 				.attr('cx', function (d) {
@@ -45,6 +55,7 @@
 					return d.radius;
 				});
 
+			// remove old points
 			datapoints.exit().remove();
 		};
 
