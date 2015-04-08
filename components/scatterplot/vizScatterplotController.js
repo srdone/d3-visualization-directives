@@ -10,6 +10,8 @@
 		var vm = this;
 		var svg, datapoints;
 		var xScale, yScale;
+		var xAxis, yAxis;
+		var xAxisContainer, yAxisContainer;
 		var width = 500;
 		var height = 300;
 		var padding = 20;
@@ -26,11 +28,24 @@
 			yScale = d3.scale.linear().range([height - padding, padding]);
 			radiusScale = d3.scale.log().range([5, 20]);
 
+			xAxis = d3.svg.axis().scale(xScale).orient('bottom');
+			yAxis = d3.svg.axis().scale(yScale).orient('left');
+
 			graphData();
 		};
 
 		function graphData () {
 			setScaleDomains();
+
+			xAxisContainer = svg.append('g')
+				.attr('class', 'axis')
+				.attr('transform', 'translate(0,' + (height - padding) + ')')
+				.call(xAxis);
+				
+			yAxisContainer = svg.append('g')
+				.attr('class', 'axis')
+				.attr('transform', 'translate(' + padding + ',0)')
+				.call(yAxis);
 
 			datapoints = svg.selectAll('circle')
 				.data(vm.data);
