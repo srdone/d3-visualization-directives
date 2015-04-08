@@ -7,6 +7,8 @@
 	
 	<viz-scatterplot data="vm.scatterplotData"></viz-scatterplot>
 
+	<viz-heatmap dimensions="vm.dimensions"></viz-heatmap>
+
 	<form>
 		<label for="x">X</label>
 		<input name="x" ng-model="vm.newData.x">
@@ -28,5 +30,7 @@
 
 	<script src="components/scatterplot/viz-scatterplot.js"></script>
 	<script src="components/scatterplot/VizScatterplotController.js"></script>
+
+	<script src="components/heatmap/viz-heatmap.js"></script>
 </body>
 </html>

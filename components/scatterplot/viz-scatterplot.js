@@ -12,7 +12,7 @@
 			bindToController: true,
 			controller: 'VizScatterplotController',
 			controllerAs: 'vm',
-			template: '<div>{{vm.data}}</div>'
+			template: '<div></div>'
 		}
 	};
 

@@ -22,6 +22,11 @@
 
 			vm.newData = {};
 		};
+
+		vm.dimensions = {
+			height: 500,
+			width: 300
+		}
 	};
 
 })();
