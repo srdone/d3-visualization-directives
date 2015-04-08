@@ -21,7 +21,6 @@
 		var dataset = scope.data;
 		var height = scope.dimensions.height;
 		var width = scope.dimensions.width;
-		debugger;
 
 		var svg = d3.select(element[0]).append('svg')
 			.attr('height', height)
@@ -41,6 +40,8 @@
 				.attr('width', 20)
 				.style('fill', 'green');
 		}
+
+		redrawGraph();
 
 	}
 
