@@ -13,6 +13,14 @@
 			{x: 300, y: 150, radius: 35}
 		];
 
+		vm.heatmapData = [
+			{volume: 200, intensity: 20, category: 'a'},
+			{volume: 250, intensity: 50, category: 'a'},
+			{volume: 300, intensity: 70, category: 'a'},
+			{volume: 350, intensity: 80, category: 'b'},
+			{volume: 100, intensity: 90, category: 'c'}
+		];
+
 		vm.addDatapoint = function () {
 			vm.scatterplotData.push({
 				x: vm.newData.x,

@@ -18,14 +18,29 @@
 
 	function vizHeatmapLink (scope, element, attributes) {
 
+		var dataset = scope.data;
+		var height = scope.dimensions.height;
+		var width = scope.dimensions.width;
 		debugger;
-		var data = attributes.data;
-		var height = attributes.dimensions.height;
-		var width = attributes.dimensions.width;
 
 		var svg = d3.select(element[0]).append('svg')
 			.attr('height', height)
-			.attr('width', width)
+			.attr('width', width);
+
+		function redrawGraph () {
+			var boxes, enteredBoxes, exitedBoxes;
+			
+			boxes = svg.selectAll('rect').data(dataset);
+			enteredBoxes = boxes.enter();
+			exitedBoxes = boxes.exit();
+
+			enteredBoxes.append('rect')
+				.attr('x', 0)
+				.attr('y', 0)
+				.attr('height', 10)
+				.attr('width', 20)
+				.style('fill', 'green');
+		}
 
 	}
 
