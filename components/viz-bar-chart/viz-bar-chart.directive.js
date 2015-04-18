@@ -14,7 +14,8 @@
         data: '=',
         maPeriod: '=',
         height: '@',
-        width: '@'
+        width: '@',
+        cbBar: '='
       },
       bindToController: true,
       controller: 'VizBarChartController',

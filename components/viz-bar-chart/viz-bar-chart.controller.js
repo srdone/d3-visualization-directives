@@ -43,7 +43,7 @@
           return  yScale(d);
         });
 
-      svg.selectAll('rect')
+      var bars = svg.selectAll('rect')
         .data(vm.data)
         .enter()
         .append('rect')
@@ -58,6 +58,12 @@
           return yScale(d.value)
         })
         .attr('class', 'bar');
+
+      if (vm.cbBar) {
+        bars.on('mouseenter', function (d) {
+          vm.cbBar(d);
+        });
+      }
 
       path.remove();
 

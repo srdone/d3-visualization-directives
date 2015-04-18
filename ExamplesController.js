@@ -6,6 +6,10 @@
 	function ExamplesController () {
 		var vm = this;
 
+    vm.alert = function (d) {
+      alert(d);
+    };
+
 		vm.scatterplotData = [
 			{x: 10, y: 50, radius: 5},
 			{x: 100, y: 250, radius: 15},
@@ -42,6 +46,6 @@
 			height: 500,
 			width: 300
 		}
-	};
+	}
 
 })();
