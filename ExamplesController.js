@@ -3,11 +3,17 @@
 	angular.module('viz')
 		.controller('ExamplesController', ExamplesController);
 
-	function ExamplesController () {
+  ExamplesController.$inject = ['$log'];
+
+	function ExamplesController ($log) {
 		var vm = this;
 
     vm.alert = function (d) {
       alert(d);
+    };
+
+    vm.log = function (d) {
+      $log.info(d);
     };
 
 		vm.scatterplotData = [
