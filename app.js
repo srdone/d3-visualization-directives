@@ -1,5 +1,5 @@
 (function () {
 
-	angular.module('dataViz', []);
+	angular.module('viz', []);
 
 })();

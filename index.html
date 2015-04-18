@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="dataViz">
+<html ng-app="viz">
 <head>
 	<link rel="stylesheet" href="styles.css">
 </head>
@@ -7,7 +7,9 @@
 	
 	<viz-scatterplot data="vm.scatterplotData"></viz-scatterplot>
 
-	<viz-heatmap dimensions="vm.dimensions" data="vm.heatmapData"></viz-heatmap>
+	<!--<viz-heatmap dimensions="vm.dimensions" data="vm.heatmapData"></viz-heatmap>-->
+
+  <viz-bar-chart height="300" width="500" data="vm.barChartData"></viz-bar-chart>
 
 	<form>
 		<label for="x">X</label>
@@ -28,9 +30,12 @@
 	<script src="app.js"></script>
 	<script src="ExamplesController.js"></script>
 
-	<script src="components/scatterplot/viz-scatterplot.js"></script>
-	<script src="components/scatterplot/VizScatterplotController.js"></script>
+	<script src="components/scatterplot/viz-scatterplot.directive.js"></script>
+	<script src="components/scatterplot/viz-scatterplot.controller.js"></script>
 
 	<script src="components/heatmap/viz-heatmap.js"></script>
+
+  <script src="components/viz-bar-chart/viz-bar-chart.directive.js"></script>
+  <script src="components/viz-bar-chart/viz-bar-chart.controller.js"></script>
 </body>
 </html>

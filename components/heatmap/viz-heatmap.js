@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module('dataViz')
+	angular.module('viz')
 		.directive('vizHeatmap', vizHeatmap);
 
 	function vizHeatmap () {

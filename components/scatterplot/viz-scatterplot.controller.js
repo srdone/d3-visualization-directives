@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module('dataViz')
+	angular.module('viz')
 		.controller('VizScatterplotController', VizScatterplotController);
 
 	VizScatterplotController.$inject = ['$scope', '$element'];

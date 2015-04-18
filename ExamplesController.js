@@ -1,6 +1,6 @@
 (function () {
 	
-	angular.module('dataViz')
+	angular.module('viz')
 		.controller('ExamplesController', ExamplesController);
 
 	function ExamplesController () {
@@ -20,6 +20,13 @@
 			{area: 350, intensity: 80, category: 'b'},
 			{area: 100, intensity: 90, category: 'c'}
 		];
+
+    vm.barChartData = [
+      {label: 'a', value: 10},
+      {label: 'a', value: 20},
+      {label: 'a', value: 30},
+      {label: 'a', value: 40}
+    ];
 
 		vm.addDatapoint = function () {
 			vm.scatterplotData.push({
