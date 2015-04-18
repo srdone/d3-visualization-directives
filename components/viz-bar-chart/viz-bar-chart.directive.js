@@ -12,6 +12,7 @@
     return {
       scope: {
         data: '=',
+        maPeriod: '=',
         height: '@',
         width: '@'
       },

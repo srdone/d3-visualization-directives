@@ -9,7 +9,7 @@
 
 	<!--<viz-heatmap dimensions="vm.dimensions" data="vm.heatmapData"></viz-heatmap>-->
 
-  <viz-bar-chart height="300" width="500" data="vm.barChartData"></viz-bar-chart>
+  <viz-bar-chart height="300" width="500" data="vm.barChartData" ma-period="1"></viz-bar-chart>
 
 	<form>
 		<label for="x">X</label>
@@ -26,6 +26,9 @@
 
 	<script src="node_modules/angular/angular.js"></script>
 	<script src="node_modules/d3/d3.js"></script>
+
+  <!--extension-->
+  <script src="extensions/moving-average.function.js"></script>
 
 	<script src="app.js"></script>
 	<script src="ExamplesController.js"></script>

@@ -9,3 +9,17 @@
     font-family: sans-serif;
     font-size: 11px;
 }
+
+svg .ma-line {
+    fill: none;
+    stroke: #666633;
+    stroke-width: 3px;
+}
+
+svg .bar {
+    fill: #FFCC66;
+}
+
+svg .bar:hover {
+    fill: #333333;
+}
