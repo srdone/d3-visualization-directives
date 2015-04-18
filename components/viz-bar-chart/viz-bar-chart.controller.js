@@ -59,6 +59,10 @@
         })
         .attr('class', 'bar');
 
+      path.remove();
+
+      path = svg.append('path');
+
       path.datum(ma)
         .attr('class', 'ma-line')
         .attr('d', line);
