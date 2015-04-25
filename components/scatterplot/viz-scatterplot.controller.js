@@ -31,21 +31,26 @@
 			xAxis = d3.svg.axis().scale(xScale).orient('bottom');
 			yAxis = d3.svg.axis().scale(yScale).orient('left');
 
+      xAxisContainer = svg.append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0,' + (height - padding) + ')');
+
+      yAxisContainer = svg.append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(' + padding + ',0)')
+
 			graphData();
 		}
 
 		function graphData () {
 			setScaleDomains();
 
-			xAxisContainer = svg.append('g')
-				.attr('class', 'axis')
-				.attr('transform', 'translate(0,' + (height - padding) + ')')
-				.call(xAxis);
+      xAxis.scale(xScale);
+      yAxis.scale(yScale);
+
+			xAxisContainer.call(xAxis);
 				
-			yAxisContainer = svg.append('g')
-				.attr('class', 'axis')
-				.attr('transform', 'translate(' + padding + ',0)')
-				.call(yAxis);
+			yAxisContainer.call(yAxis);
 
 			datapoints = svg.selectAll('circle')
 				.data(vm.data);
