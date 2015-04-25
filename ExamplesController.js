@@ -35,9 +35,9 @@
 
     vm.barChartData = [
       {label: 'a', value: 10},
-      {label: 'a', value: 20},
-      {label: 'a', value: 30},
-      {label: 'a', value: 40}
+      {label: 'b', value: 20},
+      {label: 'c', value: 30},
+      {label: 'd', value: 40}
     ];
 
     vm.generateNewBarChartData = function () {

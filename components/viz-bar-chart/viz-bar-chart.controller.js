@@ -24,6 +24,9 @@
     var xScale = d3.scale.ordinal()
       .rangeRoundBands([padding, vm.width], 0.3);
 
+    var lineScale = d3.scale.ordinal()
+      .rangeRoundBands([padding, vm.width], 0.3);
+
     var yScale = d3.scale.linear()
       .range([vm.height, padding]);
 
@@ -43,9 +46,10 @@
     var path = svg.append('path');
 
     var redrawGraph = function () {
-      var ma = d3.movingAverage(vm.data.map(function (current) { return current.value}), vm.maPeriod);
+      var ma = d3.movingAverage(vm.data.map(function (d) { return d.value}), vm.maPeriod);
 
-      xScale.domain(d3.range(vm.data.length));
+      xScale.domain(vm.data.map(function (d) { return d.label; }));
+      lineScale.domain(d3.range(vm.data.length));
       yScale.domain([0, d3.max(vm.data, function (d) { return d.value; })]);
 
       yAxis.scale(yScale);
@@ -56,7 +60,7 @@
 
       line
         .x(function (d, i) {
-          return (xScale(i + vm.maPeriod - 1) + xScale.rangeBand() / 2);
+          return (lineScale(i + vm.maPeriod - 1) + xScale.rangeBand() / 2);
         })
         .y(function (d) {
           return  yScale(d);
@@ -70,11 +74,11 @@
           return vm.height - yScale(d.value);
         })
         .attr('width', xScale.rangeBand())
-        .attr('x', function (d, i) {
-          return xScale(i);
+        .attr('x', function (d) {
+          return xScale(d.label);
         })
         .attr('y', function (d) {
-          return yScale(d.value)
+          return yScale(d.value);
         });
 
       //add new bars
@@ -84,8 +88,8 @@
           return vm.height - yScale(d.value);
         })
         .attr('width', xScale.rangeBand())
-        .attr('x', function (d, i) {
-          return xScale(i);
+        .attr('x', function (d) {
+          return xScale(d.label);
         })
         .attr('y', function (d) {
           return yScale(d.value)
