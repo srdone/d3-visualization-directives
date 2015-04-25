@@ -8,6 +8,8 @@
 	function ExamplesController ($log) {
 		var vm = this;
 
+    vm.periods = 3;
+
     vm.alert = function (d) {
       alert(d);
     };
@@ -37,6 +39,24 @@
       {label: 'a', value: 30},
       {label: 'a', value: 40}
     ];
+
+    vm.generateNewBarChartData = function () {
+      var alphabet = 'abcdefghijklmnopqrstuvwyxz';
+      var numberOfBars = Math.floor(Math.random() * 20) + 5;
+      var data = [];
+
+      for (var i = 0; i < numberOfBars; i++) {
+        data.push({label: alphabet[i], value: Math.random() * 100});
+      }
+
+      vm.barChartData = data;
+    };
+
+    vm.randomizeBarChartData = function () {
+      for (var i = 0; i < vm.barChartData.length; i++) {
+        vm.barChartData[i].value = Math.random() * 100;
+      }
+    };
 
 		vm.addDatapoint = function () {
 			vm.scatterplotData.push({

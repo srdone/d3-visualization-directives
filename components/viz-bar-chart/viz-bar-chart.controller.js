@@ -4,10 +4,10 @@
     .module('viz')
     .controller('VizBarChartController', VizBarChartController);
 
-  VizBarChartController.$inject = ['$element'];
+  VizBarChartController.$inject = ['$element', '$scope'];
 
   /* @ngInject */
-  function VizBarChartController($element) {
+  function VizBarChartController($element, $scope) {
     /* jshint validthis: true */
     var vm = this;
 
@@ -43,9 +43,23 @@
           return  yScale(d);
         });
 
-      var bars = svg.selectAll('rect')
-        .data(vm.data)
-        .enter()
+      var bars = svg.selectAll('rect').data(vm.data);
+
+      //update existing
+      bars
+        .attr('height', function (d) {
+          return vm.height - yScale(d.value);
+        })
+        .attr('width', xScale.rangeBand())
+        .attr('x', function (d, i) {
+          return xScale(i);
+        })
+        .attr('y', function (d) {
+          return yScale(d.value)
+        });
+
+      //add new bars
+      bars.enter()
         .append('rect')
         .attr('height', function (d) {
           return vm.height - yScale(d.value);
@@ -58,6 +72,8 @@
           return yScale(d.value)
         })
         .attr('class', 'bar');
+
+      bars.exit().remove();
 
       if (vm.cbBar) {
         bars.on('mouseenter', function (d) {
@@ -82,6 +98,9 @@
       redrawGraph();
     }
 
+    $scope.$watch('vm.data', redrawGraph, true);
+
+    $scope.$watch('vm.maPeriod', redrawGraph, true);
 
   }
 

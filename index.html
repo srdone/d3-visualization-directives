@@ -7,22 +7,29 @@
 	
 	<viz-scatterplot data="vm.scatterplotData"></viz-scatterplot>
 
+  <form>
+    <label for="x">X</label>
+    <input id="x" name="x" ng-model="vm.newData.x">
+
+    <label for="y">Y</label>
+    <input id="y" name="y" ng-model="vm.newData.y">
+
+    <label for="radius">Radius</label>
+    <input id="radius" name="radius" ng-model="vm.newData.radius">
+
+    <button ng-click="vm.addDatapoint()">Add Datapoint</button>
+  </form>
+
 	<!--<viz-heatmap dimensions="vm.dimensions" data="vm.heatmapData"></viz-heatmap>-->
 
-  <viz-bar-chart height="300" width="500" data="vm.barChartData" ma-period="1" cb-bar="vm.log"></viz-bar-chart>
+  <h2>Bar Chart</h2>
 
-	<form>
-		<label for="x">X</label>
-		<input name="x" ng-model="vm.newData.x">
+  <viz-bar-chart height="300" width="500" data="vm.barChartData" ma-period="vm.periods" cb-bar="vm.log"></viz-bar-chart>
 
-		<label for="y">Y</label>
-		<input name="y" ng-model="vm.newData.y">
-
-		<label for="radius">Radius</label>
-		<input name="radius" ng-model="vm.newData.radius">
-
-		<button ng-click="vm.addDatapoint()">Add Datapoint</button>
-	</form>
+  <button ng-click="vm.generateNewBarChartData()">Generate New Data</button>
+  <button ng-click="vm.randomizeBarChartData()">Randomize Data</button>
+  <label for="movingAverage">Moving Average Periods: </label>
+  <input type="number" id="movingAverage" ng-model="vm.periods">
 
 	<script src="node_modules/angular/angular.js"></script>
 	<script src="node_modules/d3/d3.js"></script>

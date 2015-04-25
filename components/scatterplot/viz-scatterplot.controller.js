@@ -32,7 +32,7 @@
 			yAxis = d3.svg.axis().scale(yScale).orient('left');
 
 			graphData();
-		};
+		}
 
 		function graphData () {
 			setScaleDomains();
