@@ -28,10 +28,15 @@
       .range([vm.height, padding]);
 
     var yAxis = d3.svg.axis().scale(yScale).orient('left');
+    var xAxis = d3.svg.axis().scale(xScale).orient('bottom');
 
     var yAxisContainer = svg.append('g')
       .attr('class', 'axis')
       .attr('transform', 'translate(' + padding + ',0)');
+
+    var xAxisContainer = svg.append('g')
+      .attr('class', 'axis')
+      .attr('transform', 'translate(0,' + vm.height + ')');
 
     var line = d3.svg.line();
 
@@ -44,8 +49,10 @@
       yScale.domain([0, d3.max(vm.data, function (d) { return d.value; })]);
 
       yAxis.scale(yScale);
+      xAxis.scale(xScale);
 
       yAxisContainer.call(yAxis);
+      xAxisContainer.call(xAxis);
 
       line
         .x(function (d, i) {
