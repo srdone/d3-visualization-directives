@@ -14,7 +14,7 @@
 		var xAxisContainer, yAxisContainer;
 		var width = 500;
 		var height = 300;
-		var padding = 20;
+		var padding = 30;
 
 		activate();
 
