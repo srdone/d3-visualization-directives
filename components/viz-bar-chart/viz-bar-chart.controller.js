@@ -14,6 +14,8 @@
     vm.activate = activate;
     vm.title = 'VizBarChartController';
 
+    var padding = 30;
+
     var svg = d3.select($element[0])
       .append('svg')
       .attr('height', vm.height)
@@ -25,6 +27,12 @@
     var yScale = d3.scale.linear()
       .range([vm.height, 0]);
 
+    var yAxis = d3.svg.axis().scale(yScale).orient('left');
+
+    var yAxisContainer = svg.append('g')
+      .attr('class', 'axis')
+      .attr('transform', 'translate(' + padding + ',0)');
+
     var line = d3.svg.line();
 
     var path = svg.append('path');
@@ -34,6 +42,10 @@
 
       xScale.domain(d3.range(vm.data.length));
       yScale.domain([0, d3.max(vm.data, function (d) { return d.value; })]);
+
+      yAxis.scale(yScale);
+
+      yAxisContainer.call(yAxis);
 
       line
         .x(function (d, i) {
