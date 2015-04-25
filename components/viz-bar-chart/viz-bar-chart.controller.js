@@ -18,14 +18,14 @@
 
     var svg = d3.select($element[0])
       .append('svg')
-      .attr('height', vm.height)
-      .attr('width', vm.width);
+      .attr('height', +vm.height + padding)
+      .attr('width', +vm.width + padding);
 
     var xScale = d3.scale.ordinal()
-      .rangeRoundBands([0, vm.width], 0.3);
+      .rangeRoundBands([padding, vm.width], 0.3);
 
     var yScale = d3.scale.linear()
-      .range([vm.height, 0]);
+      .range([vm.height, padding]);
 
     var yAxis = d3.svg.axis().scale(yScale).orient('left');
 
