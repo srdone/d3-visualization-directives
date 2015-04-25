@@ -46,7 +46,7 @@
       var bars = svg.selectAll('rect').data(vm.data);
 
       //update existing
-      bars
+      bars.transition()
         .attr('height', function (d) {
           return vm.height - yScale(d.value);
         })
