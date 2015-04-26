@@ -109,8 +109,8 @@
         .transition()
         .attr('d', line);
 
-      yAxisContainer.call(yAxis);
-      xAxisContainer.call(xAxis);
+      yAxisContainer.transition().call(yAxis);
+      xAxisContainer.transition().call(xAxis);
     };
 
     activate();
