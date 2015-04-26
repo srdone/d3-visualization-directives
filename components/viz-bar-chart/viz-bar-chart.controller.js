@@ -30,6 +30,13 @@
     var yScale = d3.scale.linear()
       .range([vm.height, padding]);
 
+
+    var line = d3.svg.line();
+
+    var barGroup = svg.append('g');
+
+    var path = svg.append('path');
+
     var yAxis = d3.svg.axis().scale(yScale).orient('left');
     var xAxis = d3.svg.axis().scale(xScale).orient('bottom');
 
@@ -41,12 +48,6 @@
       .attr('class', 'axis')
       .attr('transform', 'translate(0,' + vm.height + ')');
 
-    var line = d3.svg.line();
-
-    var barGroup = svg.append('g');
-
-    var path = svg.append('path');
-
     var redrawGraph = function () {
       var ma = d3.movingAverage(vm.data.map(function (d) { return d.value}), vm.maPeriod);
 
@@ -56,9 +57,6 @@
 
       yAxis.scale(yScale);
       xAxis.scale(xScale);
-
-      yAxisContainer.call(yAxis);
-      xAxisContainer.call(xAxis);
 
       line
         .x(function (d, i) {
@@ -110,6 +108,9 @@
         .attr('class', 'ma-line')
         .transition()
         .attr('d', line);
+
+      yAxisContainer.call(yAxis);
+      xAxisContainer.call(xAxis);
     };
 
     activate();
