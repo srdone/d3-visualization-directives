@@ -3,9 +3,9 @@
 	angular.module('viz')
 		.controller('ExamplesController', ExamplesController);
 
-  ExamplesController.$inject = ['$log'];
+  ExamplesController.$inject = ['$log', '$interval'];
 
-	function ExamplesController ($log) {
+	function ExamplesController ($log, $interval) {
 		var vm = this;
 
     vm.periods = 3;
@@ -71,7 +71,11 @@
 		vm.dimensions = {
 			height: 500,
 			width: 300
-		}
+		};
+
+    vm.generateNewBarChartData();
+
+    $interval(vm.randomizeBarChartData, 5000);
 	}
 
 })();
