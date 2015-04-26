@@ -3,16 +3,47 @@
 <head>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="examples.css">
 </head>
 <body ng-controller="ExamplesController as vm">
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand">D3 Visualization Directives</a>
   </div>
 </nav>
 
 <div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Bar Chart</h3>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <viz-bar-chart height="300" width="500" data="vm.barChartData" ma-period="vm.periods" cb-bar="vm.log"></viz-bar-chart>
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <div class="form-inline">
+          <label for="movingAverage">Moving Average Periods: </label>
+          <input class="form-control" type="number" id="movingAverage" ng-model="vm.periods">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-default" ng-click="vm.generateNewBarChartData()">Generate New Data</button>
+        <button class="btn btn-default" ng-click="vm.randomizeBarChartData()">Randomize Data</button>
+      </div>
+
+    </div>
+
+  </div>
 
   <div class="row">
     <h3 class="col-md-6">Scatterplot</h3>
@@ -48,36 +79,6 @@
   </div>
 
 	<!--<viz-heatmap dimensions="vm.dimensions" data="vm.heatmapData"></viz-heatmap>-->
-
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Bar Chart</h3>
-    </div>
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-6">
-      <viz-bar-chart height="300" width="500" data="vm.barChartData" ma-period="vm.periods" cb-bar="vm.log"></viz-bar-chart>
-    </div>
-
-    <div class="col-md-6">
-
-      <div class="form-group">
-        <div class="form-inline">
-          <label for="movingAverage">Moving Average Periods: </label>
-          <input class="form-control" type="number" id="movingAverage" ng-model="vm.periods">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <button class="btn btn-default" ng-click="vm.generateNewBarChartData()">Generate New Data</button>
-        <button class="btn btn-default" ng-click="vm.randomizeBarChartData()">Randomize Data</button>
-      </div>
-
-    </div>
-
-  </div>
 
 
 </div>
