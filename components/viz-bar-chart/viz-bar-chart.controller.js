@@ -43,6 +43,8 @@
 
     var line = d3.svg.line();
 
+    var barGroup = svg.append('g');
+
     var path = svg.append('path');
 
     var redrawGraph = function () {
@@ -66,7 +68,7 @@
           return  yScale(d);
         });
 
-      var bars = svg.selectAll('rect').data(vm.data);
+      bars = barGroup.selectAll('rect').data(vm.data);
 
       //update existing
       bars.transition()
@@ -104,12 +106,9 @@
         });
       }
 
-      path.remove();
-
-      path = svg.append('path');
-
       path.datum(ma)
         .attr('class', 'ma-line')
+        .transition()
         .attr('d', line);
     };
 
