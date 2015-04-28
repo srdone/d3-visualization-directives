@@ -101,6 +101,7 @@
       if (vm.cbBar) {
         bars.on('mouseenter', function (d) {
           vm.cbBar(d);
+          $scope.$apply(); // added to make sure changes that are meant to happen outside the directive propogate
         });
       }
 

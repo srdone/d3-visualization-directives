@@ -3,19 +3,21 @@
 	angular.module('viz')
 		.controller('ExamplesController', ExamplesController);
 
-  ExamplesController.$inject = ['$log', '$interval'];
+  ExamplesController.$inject = ['$interval'];
 
-	function ExamplesController ($log, $interval) {
+	function ExamplesController ($interval) {
 		var vm = this;
 
     vm.periods = 3;
+
+    vm.barHoveredValue = '';
 
     vm.alert = function (d) {
       alert(d);
     };
 
     vm.log = function (d) {
-      $log.info(d);
+      vm.barHoveredValue = d.value;
     };
 
 		vm.scatterplotData = [
