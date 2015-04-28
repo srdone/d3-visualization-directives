@@ -98,11 +98,15 @@
 
       bars.exit().remove();
 
-      if (vm.cbBar) {
-        bars.on('mouseenter', function (d) {
-          vm.cbBar(d);
-          $scope.$apply(); // added to make sure changes that are meant to happen outside the directive propogate
-        });
+      if (vm.callbacks && vm.callbacks.bars) {
+        if (vm.callbacks.bars.mouseenter) {
+          vm.callbacks.bars.mouseenter.forEach(function (callback) {
+            bars.on('mouseenter', function (d) {
+              callback(d);
+              $scope.$apply(); // added to make sure changes that are meant to happen outside the directive propogate
+            });
+          });
+        }
       }
 
       path.datum(ma)

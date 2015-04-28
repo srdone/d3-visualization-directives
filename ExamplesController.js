@@ -16,8 +16,14 @@
       alert(d);
     };
 
-    vm.log = function (d) {
+    var barHoveredValueSet = function (d) {
       vm.barHoveredValue = d.value;
+    };
+
+    vm.callbacks = {
+      bars: {
+        mouseenter: [barHoveredValueSet]
+      }
     };
 
 		vm.scatterplotData = [

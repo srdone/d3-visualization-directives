@@ -79,7 +79,7 @@
 
 			// remove old points
 			datapoints.exit().remove();
-		};
+		}
 
 		function setScaleDomains () {
 			var xValues, yValues;
@@ -111,7 +111,7 @@
 			xScale.domain([xMin, xMax]);
 			yScale.domain([yMin, yMax]);
 			radiusScale.domain([radiusMin, radiusMax]);
-		};
+		}
 
 		$scope.$watch('vm.data', graphData, true);
 
